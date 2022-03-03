@@ -1,0 +1,42 @@
+{
+  "name": "bloggrs-api-client",
+  "version": "0.1.2",
+  "description": "An universal client for the Bloggrs API written in Typescript",
+  "main": "dist/index.js",
+  "module": "dist/index.m.js",
+  "umd:main": "dist/index.umd.js",
+  "source": "src/index.ts",
+  "repository": "github:bloggrs/bloggrs-api-client",
+  "scripts": {
+    "build": "rm -rf dist && microbundle  --tsconfig tsconfig.json",
+    "dev": "microbundle watch --tsconfig tsconfig.json",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "jest": "^25.4.0",
+    "microbundle": "0.13.0",
+    "nock": "^12.0.3",
+    "source-map-support": "^0.5.21"
+  },
+  "keywords": [
+    "dev.to",
+    "javascript",
+    "typescript",
+    "api",
+    "client",
+    "universal"
+  ],
+  "author": "Gjergj Kadriu <gjergjk71@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "dependencies": {
+    "@cspotcode/source-map-consumer": "^0.8.0",
+    "cross-fetch": "^3.1.5",
+    "node-fetch": "^3.2.1",
+    "querystringify": "2.2.0"
+  }
+}
