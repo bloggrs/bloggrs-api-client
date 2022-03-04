@@ -44,22 +44,21 @@ import { BloggrsClient } from 'bloggrs-api-client';
 
 const bloggrsClient = new BloggrsClient({
   apiKey: '<YOUR-BLOGGERS-API-KEY>',
-  apiSecret: '<YOUR-BLOGGRS-API-SECRET>',
-  accessToken: '<YOUR-BLOGGRS-ACCESS-TOKEN>',
-  accessTokenSecret: '<YOUR-BLOGGRS-ACCESS-TOKEN-SECRET>',
+  // coming soon
+  // apiSecret: '<YOUR-BLOGGRS-API-SECRET>',
+  // accessToken: '<YOUR-BLOGGRS-ACCESS-TOKEN>',
+  // accessTokenSecret: '<YOUR-BLOGGRS-ACCESS-TOKEN-SECRET>',
 });
 
 // Search for a user
-const data = await bloggrsClient.accountsAndUsers.usersSearch({ q: 'bloggrsDev' });
+const data = await bloggrsClient.users.all({ where: { email: "example@domain.com" });
 
-// Get message event by Id
-const data = await bloggrsClient.directMessages.directMessagesEventsShow({ id: '1234' });
+// Get user by id
+const data = await bloggrsClient.users.getOne(1234);
 
-// Get most recent 25 retweets of a tweet
-const data = await bloggrsClient.tweets.statusesRetweetsById({ id: '12345', count: 25 });
+// Get most recent 25 posts 
+const data = await bloggrsClient.all({ page: 25, pageSize: 1 });
 
-// Get local trends
-const data = await bloggrsClient.trends.trendsAvailable();
 ```
 
 [See all available methods here](https://github.com/bloggrs/bloggrs/blob/main/REFERENCES.md).
@@ -74,12 +73,13 @@ You can configure the caching behavior upon instantiation of the client:
 ```javascript
 const bloggrsClient = new BloggrsClient({
   apiKey: '<YOUR-BLOGGRS-API-KEY>',
-  apiSecret: '<YOUR-BLOGGRS-API-SECRET>',
-  accessToken: '<YOUR-BLOGGRS-ACCESS-TOKEN>',
-  accessTokenSecret: '<YOUR-BLOGGRS-ACCESS-TOKEN-SECRET>',
-  ttl: 120, // seconds. Defaults to 360
-  disableCache: true, // Disables the caching behavior. Defaults to 'false'
-  maxByteSize: 32000000, // Maximum (approximated) memory size for cache store. Defaults to 16000000.
+  // coming soon
+  // apiSecret: '<YOUR-BLOGGRS-API-SECRET>',
+  // accessToken: '<YOUR-BLOGGRS-ACCESS-TOKEN>',
+  // accessTokenSecret: '<YOUR-BLOGGRS-ACCESS-TOKEN-SECRET>',
+  // ttl: 120, // seconds. Defaults to 360
+  // disableCache: true, // Disables the caching behavior. Defaults to 'false'
+  // maxByteSize: 32000000, // Maximum (approximated) memory size for cache store. Defaults to 16000000.
 });
 ```
 
