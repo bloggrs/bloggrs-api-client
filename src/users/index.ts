@@ -1,30 +1,37 @@
-import { Base } from '../base'
+import { Base, Pagination } from '../base'
 import { getInstanceProperties } from '../utils'
-import { NewUser, User } from './types'
-
-const resourceName = 'users'
+import { NewUser, UpdateUser, User } from './types'
 
 export class Users extends Base {
-
-    users_create (user: NewUser) {
+    private users_create (user: NewUser) {
         return this.request<User>("/users", {
             method: "POST",
             body: JSON.stringify(user)
         })
     }
-    users_getCurrent (): Promise<any> {
-        return this.request<User>(`${resourceName}/me`)
+
+    private users_update (id: number, user: UpdateUser) {
+        return this.request<User>("/users/" + id, {
+            method: "PATCH",
+            body: JSON.stringify(user)
+        })
     }
 
-    getUser (id: number): Promise<any> {
-        return this.request<User>(`${resourceName}/${id}`)
+    private users_delete (id: number) {
+        return this.request<User>("/users/" + id, {
+            method: "DELETE"
+        })
     }
 
-    getUserByUsername (username: string): Promise<any> {
-        return this.request<User>(`${resourceName}/by_username?url=${username}`)
+    private users_getOne (id: number) {
+        return this.request<User>("/users/" + id);
     }
 
-    get [resourceName](): Record<string, any> {
-        return getInstanceProperties(this, resourceName);
+    private users_all (pagination?: Pagination) {
+        return this.request<User>("/users");
+    }
+
+    get ["users"](): Record<string, any> {
+        return getInstanceProperties(this, "users");
     }
 }

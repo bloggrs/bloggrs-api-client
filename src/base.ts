@@ -22,7 +22,7 @@ export abstract class Base {
 
     constructor(config: Config) {
         this.apiKey = config.apiKey
-        this.basePath = config.basePath || 'https://dev.to/api/'
+        this.basePath = config.basePath || 'http://localhost:5500/api/v1'
     }
     
     protected request<T> (endpoint: string, options?: RequestInit): Promise<T> {
@@ -40,12 +40,13 @@ export abstract class Base {
             headers,
         }
 
-        return fetch(url, config).then(r => {
-            console.log("HERE")
+        return fetch(url, config).then(async r => {
             if (r.ok) {
-                return r.json()
+                const body = await r.json();
+                return body.data
             }
-            throw new Error(r.statusText)
+            if (!r.json) throw r
+            throw await r.json()
         })
     }
 

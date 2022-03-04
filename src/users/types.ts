@@ -14,3 +14,10 @@ export type NewUser = {
     first_name: string;
     last_name: string;
 }
+
+export type UpdateUser = {
+    email?: string;
+    password?: string;
+    first_name?: string;
+    last_name?: string;
+}

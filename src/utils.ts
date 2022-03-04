@@ -21,7 +21,8 @@ export function getInstanceProperties(instance: any, resourceName: string) {
     if (excluded) return;
     const prefix = resourceName + "_";
     const key_includes_prefix = key.indexOf(prefix) !== -1
-    if (key_includes_prefix) key = key.replace(prefix, "")
+    if (!key_includes_prefix) return; 
+    key = key.replace(prefix, "")
     const func = instance[original_key].bind(instance);
     properties[key] = func;
   })
