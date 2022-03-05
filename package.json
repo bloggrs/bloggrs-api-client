@@ -36,6 +36,7 @@
   "dependencies": {
     "@cspotcode/source-map-consumer": "^0.8.0",
     "cross-fetch": "^3.1.5",
+    "isomorphic-unfetch": "^3.1.0",
     "node-fetch": "^3.2.1",
     "querystringify": "2.2.0"
   }

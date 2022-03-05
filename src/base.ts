@@ -1,9 +1,9 @@
 // import fetch from 'cross-fetch';
 // import 'cross-fetch/polyfill';
-import node_fetch from "node-fetch";
+import 'isomorphic-unfetch';
 
-var fetch: any = window && window.fetch
-if (!fetch) fetch = node_fetch
+// var fetch: any = window && window.fetch
+// if (!fetch) fetch = node_fetch
 
 type Config = {
     apiKey: string,
