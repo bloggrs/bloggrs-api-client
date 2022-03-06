@@ -33,6 +33,10 @@ export class Blogs extends Base {
         return this.request<Blog>("/blogs");
     }
 
+    private blogs_getByApiKey(apiKey: string) {
+        return this.request<Blog>("/blogs/api_key/" + apiKey);
+    }
+
     get ["blogs"](): Record<string, any> {
         return getInstanceProperties(this, "blogs");
     }
